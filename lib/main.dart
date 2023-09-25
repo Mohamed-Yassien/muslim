@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app/data/sources/local/sharedpreferences.dart';
+import 'app/presentation/screens/surah_ayat/cubit/surah_ayat_cubit.dart';
+import 'app/presentation/screens/surahs/cubit/surahs_cubit.dart';
 import 'core/bloc_observer.dart';
 import 'core/routes/routes.dart';
 import 'core/themes.dart';
@@ -36,14 +38,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: lightTheme,
-      onGenerateRoute: RouteGenerator.getRoute,
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.homeScreen,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SurahsCubit()..loadSurahs(),
+        ),
+        BlocProvider(
+          create: (context) => SurahAyatCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: lightTheme,
+        onGenerateRoute: RouteGenerator.getRoute,
+        debugShowCheckedModeBanner: false,
+        initialRoute: Routes.homeScreen,
+      ),
     );
   }
 }

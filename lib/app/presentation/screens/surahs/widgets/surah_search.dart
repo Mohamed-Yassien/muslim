@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslin/app/presentation/screens/surahs/cubit/surahs_cubit.dart';
 
 import '../../../components/textfield.dart';
 
@@ -7,13 +9,20 @@ class SurahSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return     DefaultTextField(
+    return DefaultTextField(
       radius: 8,
       textSize: 13,
       hintSize: 12,
       isFill: true,
       fillColor: Colors.white,
       onChange: (val) {
+        if (val.isEmpty) {
+          context.read<SurahsCubit>().deleteFilters();
+        } else {
+          context.read<SurahsCubit>().filterCategoryProductsWithName(
+                name: val,
+              );
+        }
       },
       suffixIcon: const Padding(
         padding: EdgeInsets.only(

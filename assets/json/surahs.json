@@ -1,0 +1,688 @@
+{
+  "surahs": [
+    {
+      "number": 1,
+      "name": "الفاتحة",
+      "numberOfAyahs": 7,
+      "type": "مكية"
+    },
+    {
+      "number": 2,
+      "name": "البقرة",
+      "numberOfAyahs": 286,
+      "type": "مدنية"
+    },
+    {
+      "number": 3,
+      "name": "آل عمران",
+      "numberOfAyahs": 200,
+      "type": "مدنية"
+    },
+    {
+      "number": 4,
+      "name": "النساء",
+      "numberOfAyahs": 176,
+      "type": "مدنية"
+    },
+    {
+      "number": 5,
+      "name": "المائدة",
+      "numberOfAyahs": 120,
+      "type": "مدنية"
+    },
+    {
+      "number": 6,
+      "name": "الأنعام",
+      "numberOfAyahs": 165,
+      "type": "مكية"
+    },
+    {
+      "number": 7,
+      "name": "الأعراف",
+      "numberOfAyahs": 206,
+      "type": "مكية"
+    },
+    {
+      "number": 8,
+      "name": "الأنفال",
+      "numberOfAyahs": 75,
+      "type": "مدنية"
+    },
+    {
+      "number": 9,
+      "name": "التوبة",
+      "numberOfAyahs": 129,
+      "type": "مدنية"
+    },
+    {
+      "number": 10,
+      "name": "يونس",
+      "numberOfAyahs": 109,
+      "type": "مكية"
+    },
+    {
+      "number": 11,
+      "name": "هود",
+      "numberOfAyahs": 123,
+      "type": "مكية"
+    },
+    {
+      "number": 12,
+      "name": "يوسف",
+      "numberOfAyahs": 111,
+      "type": "مكية"
+    },
+    {
+      "number": 13,
+      "name": "الرعد",
+      "numberOfAyahs": 43,
+      "type": "مكية"
+    },
+    {
+      "number": 14,
+      "name": "إبراهيم",
+      "numberOfAyahs": 52,
+      "type": "مكية"
+    },
+    {
+      "number": 15,
+      "name": "الحجر",
+      "numberOfAyahs": 99,
+      "type": "مكية"
+    },
+    {
+      "number": 16,
+      "name": "النحل",
+      "numberOfAyahs": 128,
+      "type": "مكية"
+    },
+    {
+      "number": 17,
+      "name": "الإسراء",
+      "numberOfAyahs": 111,
+      "type": "مكية"
+    },
+    {
+      "number": 18,
+      "name": "الكهف",
+      "numberOfAyahs": 110,
+      "type": "مكية"
+    },
+    {
+      "number": 19,
+      "name": "مريم",
+      "numberOfAyahs": 98,
+      "type": "مكية"
+    },
+    {
+      "number": 20,
+      "name": "طه",
+      "numberOfAyahs": 135,
+      "type": "مكية"
+    },
+    {
+      "number": 21,
+      "name": "الأنبياء",
+      "numberOfAyahs": 112,
+      "type": "مكية"
+    },
+    {
+      "number": 22,
+      "name": "الحج",
+      "numberOfAyahs": 78,
+      "type": "مدنية"
+    },
+    {
+      "number": 23,
+      "name": "المؤمنون",
+      "numberOfAyahs": 118,
+      "type": "مكية"
+    },
+    {
+      "number": 24,
+      "name": "النور",
+      "numberOfAyahs": 64,
+      "type": "مدنية"
+    },
+    {
+      "number": 25,
+      "name": "الفرقان",
+      "numberOfAyahs": 77,
+      "type": "مكية"
+    },
+    {
+      "number": 26,
+      "name": "الشعراء",
+      "numberOfAyahs": 227,
+      "type": "مكية"
+    },
+    {
+      "number": 27,
+      "name": "النمل",
+      "numberOfAyahs": 93,
+      "type": "مكية"
+    },
+    {
+      "number": 28,
+      "name": "القصص",
+      "numberOfAyahs": 88,
+      "type": "مكية"
+    },
+    {
+      "number": 29,
+      "name": "العنكبوت",
+      "numberOfAyahs": 69,
+      "type": "مكية"
+    },
+    {
+      "number": 30,
+      "name": "الروم",
+      "numberOfAyahs": 60,
+      "type": "مكية"
+    },
+    {
+      "number": 31,
+      "name": "لقمان",
+      "numberOfAyahs": 34,
+      "type": "مكية"
+    },
+    {
+      "number": 32,
+      "name": "السجدة",
+      "numberOfAyahs": 30,
+      "type": "مكية"
+    },
+    {
+      "number": 33,
+      "name": "الأحزاب",
+      "numberOfAyahs": 73,
+      "type": "مدنية"
+    },
+    {
+      "number": 34,
+      "name": "سبأ",
+      "numberOfAyahs": 54,
+      "type": "مكية"
+    },
+    {
+      "number": 35,
+      "name": "فاطر",
+      "numberOfAyahs": 45,
+      "type": "مكية"
+    },
+    {
+      "number": 36,
+      "name": "يس",
+      "numberOfAyahs": 83,
+      "type": "مكية"
+    },
+    {
+      "number": 37,
+      "name": "الصافات",
+      "numberOfAyahs": 182,
+      "type": "مكية"
+    },
+    {
+      "number": 38,
+      "name": "ص",
+      "numberOfAyahs": 88,
+      "type": "مكية"
+    },
+    {
+      "number": 39,
+      "name": "الزمر",
+      "numberOfAyahs": 75,
+      "type": "مكية"
+    },
+    {
+      "number": 40,
+      "name": "غافر",
+      "numberOfAyahs": 85,
+      "type": "مكية"
+    },
+    {
+      "number": 41,
+      "name": "فصلت",
+      "numberOfAyahs": 54,
+      "type": "مكية"
+    },
+    {
+      "number": 42,
+      "name": "الشورى",
+      "numberOfAyahs": 53,
+      "type": "مكية"
+    },
+    {
+      "number": 43,
+      "name": "الزخرف",
+      "numberOfAyahs": 89,
+      "type": "مكية"
+    },
+    {
+      "number": 44,
+      "name": "الدخان",
+      "numberOfAyahs": 59,
+      "type": "مكية"
+    },
+    {
+      "number": 45,
+      "name": "الجاثية",
+      "numberOfAyahs": 37,
+      "type": "مكية"
+    },
+    {
+      "number": 46,
+      "name": "الأحقاف",
+      "numberOfAyahs": 60,
+      "type": "مكية"
+    },
+    {
+      "number": 47,
+      "name": "محمد",
+      "numberOfAyahs": 38,
+      "type": "مدنية"
+    },
+    {
+      "number": 48,
+      "name": "الفتح",
+      "numberOfAyahs": 29,
+      "type": "مدنية"
+    },
+    {
+      "number": 49,
+      "name": "الحشر",
+      "numberOfAyahs": 18,
+      "type": "مدنية"
+    },
+    {
+      "number": 50,
+      "name": "ق",
+      "numberOfAyahs": 45,
+      "type": "مكية"
+    },
+    {
+      "number": 51,
+      "name": "الذاريات",
+      "numberOfAyahs": 60,
+      "type": "مكية"
+    },
+    {
+      "number": 52,
+      "name": "الطور",
+      "numberOfAyahs": 49,
+      "type": "مكية"
+    },
+    {
+      "number": 53,
+      "name": "النجم",
+      "numberOfAyahs": 62,
+      "type": "مكية"
+    },
+    {
+      "number": 54,
+      "name": "القمر",
+      "numberOfAyahs": 55,
+      "type": "مكية"
+    },
+    {
+      "number": 55,
+      "name": "الرحمن",
+      "numberOfAyahs": 78,
+      "type": "مدنية"
+    },
+    {
+      "number": 56,
+      "name": "الواقعة",
+      "numberOfAyahs": 96,
+      "type": "مكية"
+    },
+    {
+      "number": 57,
+      "name": "الحديد",
+      "numberOfAyahs": 29,
+      "type": "مدنية"
+    },
+    {
+      "number": 58,
+      "name": "المجادلة",
+      "numberOfAyahs": 22,
+      "type": "مدنية"
+    },
+    {
+      "number": 59,
+      "name": "الحشر",
+      "numberOfAyahs": 24,
+      "type": "مدنية"
+    },
+    {
+      "number": 60,
+      "name": "الممتحنة",
+      "numberOfAyahs": 13,
+      "type": "مدنية"
+    },
+    {
+      "number": 61,
+      "name": "الصف",
+      "numberOfAyahs": 14,
+      "type": "مدنية"
+    },
+    {
+      "number": 62,
+      "name": "الجمعة",
+      "numberOfAyahs": 11,
+      "type": "مدنية"
+    },
+    {
+      "number": 63,
+      "name": "المنافقون",
+      "numberOfAyahs": 11,
+      "type": "مدنية"
+    },
+    {
+      "number": 64,
+      "name": "التغابن",
+      "numberOfAyahs": 18,
+      "type": "مدنية"
+    },
+    {
+      "number": 65,
+      "name": "الطلاق",
+      "numberOfAyahs": 12,
+      "type": "مدنية"
+    },
+    {
+      "number": 66,
+      "name": "التحريم",
+      "numberOfAyahs": 12,
+      "type": "مدنية"
+    },
+    {
+      "number": 67,
+      "name": "الملك",
+      "numberOfAyahs": 30,
+      "type": "مكية"
+    },
+    {
+      "number": 68,
+      "name": "القلم",
+      "numberOfAyahs": 52,
+      "type": "مكية"
+    },
+    {
+      "number": 69,
+      "name": "الحاقة",
+      "numberOfAyahs": 52,
+      "type": "مكية"
+    },
+    {
+      "number": 70,
+      "name": "المعارج",
+      "numberOfAyahs": 44,
+      "type": "مكية"
+    },
+    {
+      "number": 71,
+      "name": "نوح",
+      "numberOfAyahs": 28,
+      "type": "مكية"
+    },
+    {
+      "number": 72,
+      "name": "الجن",
+      "numberOfAyahs": 28,
+      "type": "مكية"
+    },
+    {
+      "number": 73,
+      "name": "المزمل",
+      "numberOfAyahs": 20,
+      "type": "مكية"
+    },
+    {
+      "number": 74,
+      "name": "المدثر",
+      "numberOfAyahs": 56,
+      "type": "مكية"
+    },
+    {
+      "number": 75,
+      "name": "القيامة",
+      "numberOfAyahs": 40,
+      "type": "مكية"
+    },
+    {
+      "number": 76,
+      "name": "الإنسان",
+      "numberOfAyahs": 31,
+      "type": "مدنية"
+    },
+    {
+      "number": 77,
+      "name": "المرسلات",
+      "numberOfAyahs": 50,
+      "type": "مكية"
+    },
+    {
+      "number": 78,
+      "name": "النبأ",
+      "numberOfAyahs": 40,
+      "type": "مكية"
+    },
+    {
+      "number": 79,
+      "name": "النازعات",
+      "numberOfAyahs": 46,
+      "type": "مكية"
+    },
+    {
+      "number": 80,
+      "name": "عبس",
+      "numberOfAyahs": 42,
+      "type": "مكية"
+    },
+    {
+      "number": 81,
+      "name": "التكوير",
+      "numberOfAyahs": 29,
+      "type": "مكية"
+    },
+    {
+      "number": 82,
+      "name": "الإنفطار",
+      "numberOfAyahs": 19,
+      "type": "مكية"
+    },
+    {
+      "number": 83,
+      "name": "المطففين",
+      "numberOfAyahs": 36,
+      "type": "مكية"
+    },
+    {
+      "number": 84,
+      "name": "الإنشقاق",
+      "numberOfAyahs": 25,
+      "type": "مكية"
+    },
+    {
+      "number": 85,
+      "name": "البروج",
+      "numberOfAyahs": 22,
+      "type": "مكية"
+    },
+    {
+      "number": 86,
+      "name": "الطارق",
+      "numberOfAyahs": 17,
+      "type": "مكية"
+    },
+    {
+      "number": 87,
+      "name": "الأعلى",
+      "numberOfAyahs": 19,
+      "type": "مكية"
+    },
+    {
+      "number": 88,
+      "name": "الغاشية",
+      "numberOfAyahs": 26,
+      "type": "مكية"
+    },
+    {
+      "number": 89,
+      "name": "الفجر",
+      "numberOfAyahs": 30,
+      "type": "مكية"
+    },
+    {
+      "number": 90,
+      "name": "البلد",
+      "numberOfAyahs": 20,
+      "type": "مكية"
+    },
+    {
+      "number": 91,
+      "name": "الشمس",
+      "numberOfAyahs": 15,
+      "type": "مكية"
+    },
+    {
+      "number": 92,
+      "name": "الليل",
+      "numberOfAyahs": 21,
+      "type": "مكية"
+    },
+    {
+      "number": 93,
+      "name": "الضحى",
+      "numberOfAyahs": 11,
+      "type": "مكية"
+    },
+    {
+      "number": 94,
+      "name": "الشرح",
+      "numberOfAyahs": 8,
+      "type": "مكية"
+    },
+    {
+      "number": 95,
+      "name": "التين",
+      "numberOfAyahs": 8,
+      "type": "مكية"
+    },
+    {
+      "number": 96,
+      "name": "العلق",
+      "numberOfAyahs": 19,
+      "type": "مكية"
+    },
+    {
+      "number": 97,
+      "name": "القدر",
+      "numberOfAyahs": 5,
+      "type": "مكية"
+    },
+    {
+      "number": 98,
+      "name": "البينة",
+      "numberOfAyahs": 8,
+      "type": "مدنية"
+    },
+    {
+      "number": 99,
+      "name": "الزلزلة",
+      "numberOfAyahs": 8,
+      "type": "مدنية"
+    },
+    {
+      "number": 100,
+      "name": "العاديات",
+      "numberOfAyahs": 11,
+      "type": "مكية"
+    },
+    {
+      "number": 101,
+      "name": "القارعة",
+      "numberOfAyahs": 11,
+      "type": "مكية"
+    },
+    {
+      "number": 102,
+      "name": "التكاثر",
+      "numberOfAyahs": 8,
+      "type": "مكية"
+    },
+    {
+      "number": 103,
+      "name": "العصر",
+      "numberOfAyahs": 3,
+      "type": "مكية"
+    },
+    {
+      "number": 104,
+      "name": "الهمزة",
+      "numberOfAyahs": 9,
+      "type": "مكية"
+    },
+    {
+      "number": 105,
+      "name": "الفيل",
+      "numberOfAyahs": 5,
+      "type": "مكية"
+    },
+    {
+      "number": 106,
+      "name": "قريش",
+      "numberOfAyahs": 4,
+      "type": "مكية"
+    },
+    {
+      "number": 107,
+      "name": "الماعون",
+      "numberOfAyahs": 7,
+      "type": "مكية"
+    },
+    {
+      "number": 108,
+      "name": "الكوثر",
+      "numberOfAyahs": 3,
+      "type": "مكية"
+    },
+    {
+      "number": 109,
+      "name": "الكافرون",
+      "numberOfAyahs": 6,
+      "type": "مكية"
+    },
+    {
+      "number": 110,
+      "name": "النصر",
+      "numberOfAyahs": 3,
+      "type": "مدنية"
+    },
+    {
+      "number": 111,
+      "name": "المسد",
+      "numberOfAyahs": 5,
+      "type": "مكية"
+    },
+    {
+      "number": 112,
+      "name": "الإخلاص",
+      "numberOfAyahs": 4,
+      "type": "مكية"
+    },
+    {
+      "number": 113,
+      "name": "الفلق",
+      "numberOfAyahs": 5,
+      "type": "مكية"
+    },
+    {
+      "number": 114,
+      "name": "الناس",
+      "numberOfAyahs": 6,
+      "type": "مكية"
+    }
+  ]
+}
