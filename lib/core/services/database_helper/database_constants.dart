@@ -1,7 +1,8 @@
-String tableArchived = 'cartTable';
+String tableArchived = 'archivedTable';
 
-String columnId = 'productId';
-String columnName = 'productName';
-String columnImage = 'productImage';
-String columnPrice = 'productPrice';
-String columnCount = 'productCount';
+String columnIndex = 'surahIndex';
+String columnName = 'surahName';
+String columnType = 'surahType';
+String columnNumberOfAyahs = 'numberOfAyahs';
+String columnSurahNumber = 'surahNumber';
+String columnContent = 'surahContent';

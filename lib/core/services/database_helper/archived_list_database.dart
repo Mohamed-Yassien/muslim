@@ -4,10 +4,10 @@ import 'package:sqflite/sqflite.dart';
 import 'archived_sura_model.dart';
 import 'database_constants.dart';
 
-class CartDatabaseHelper {
-  CartDatabaseHelper._();
+class ArchivedListDataBaseHelper {
+  ArchivedListDataBaseHelper._();
 
-  static CartDatabaseHelper db = CartDatabaseHelper._();
+  static ArchivedListDataBaseHelper db = ArchivedListDataBaseHelper._();
 
   static Database? _database;
 
@@ -19,20 +19,21 @@ class CartDatabaseHelper {
   }
 
   initDatabase() async {
-    String path = join(await getDatabasesPath(), 'cartData.db');
+    String path = join(await getDatabasesPath(), 'archivedList.db');
     return await openDatabase(path, version: 1,
         onCreate: (Database data, int version) async {
       await data.execute('''
         CREATE TABLE $tableArchived (
-        $columnId INTEGER NOT NULL,
-        $columnCount INTEGER NOT NULL,
+        $columnSurahNumber INTEGER NOT NULL,
+        $columnNumberOfAyahs INTEGER NOT NULL,
+        $columnContent TEXT NOT NULL,
         $columnName TEXT NOT NULL,
-        $columnImage TEXT NOT NULL,
-        $columnPrice TEXT NOT NULL)''');
+        $columnType TEXT NOT NULL,
+        $columnIndex INTEGER NOT NULL)''');
     });
   }
 
-  addProductToCart(ArchivedSuraModel model) async {
+  addAyahToList(ArchivedSuraModel model) async {
     var dbClient = await database;
     await dbClient.insert(
       tableArchived,
@@ -41,7 +42,7 @@ class CartDatabaseHelper {
     );
   }
 
-  Future<List<ArchivedSuraModel>> getAllCartProducts() async {
+  Future<List<ArchivedSuraModel>> getArchivedList() async {
     var dbClient = await database;
     List<Map<String, dynamic>> maps = await dbClient.query(tableArchived);
     return maps.isNotEmpty
@@ -59,17 +60,17 @@ class CartDatabaseHelper {
   //   );
   // }
 
-  deleteCartProduct(int productId) async {
-    var dbClient = await database;
-    await dbClient.delete(
-      tableArchived,
-      where: '$columnId = ? ',
-      whereArgs: [productId],
-    );
-  }
-
-  deleteAllLocaleCarts() async {
-    var dbClient = await database;
-    await dbClient.delete(tableArchived);
-  }
+  // deleteCartProduct(int productId) async {
+  //   var dbClient = await database;
+  //   await dbClient.delete(
+  //     tableArchived,
+  //     where: '$columnId = ? ',
+  //     whereArgs: [productId],
+  //   );
+  // }
+  //
+  // deleteAllLocaleCarts() async {
+  //   var dbClient = await database;
+  //   await dbClient.delete(tableArchived);
+  // }
 }

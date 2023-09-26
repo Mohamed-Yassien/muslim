@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/strings.dart';
-import '../archives/archives_screen.dart';
+import '../archives/archived_screen.dart';
 import '../surahs/surahs_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             SurahsScreen(),
-            ArchivesScreen(),
+            ArchivedListScreen(),
           ],
         ),
       ),

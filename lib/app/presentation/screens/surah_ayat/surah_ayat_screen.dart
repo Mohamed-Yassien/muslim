@@ -5,10 +5,11 @@ import 'package:muslin/app/domain/models/surah/surah_model.dart';
 import 'package:muslin/app/presentation/components/custom_text.dart';
 import 'package:muslin/app/presentation/components/loading_and_error.dart';
 import 'package:muslin/core/constants.dart';
+import 'package:muslin/core/services/database_helper/archived_sura_model.dart';
+import '../archives/cubit/cubit/archives_cubit.dart';
 import 'cubit/surah_ayat_cubit.dart';
 
 class SurahAyatScreen extends StatefulWidget {
-  static const String id = "/SurahAyatScreen";
   final SurahData surahData;
 
   const SurahAyatScreen({
@@ -55,6 +56,7 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
               child: BodyOfSurah(
                 surahNumber: surahIndex,
                 surahCount: widget.surahData.numberOfAyahs ?? 0,
+                surahData: widget.surahData,
               ),
             ),
           );
@@ -68,11 +70,11 @@ class BodyOfSurah extends StatefulWidget {
   const BodyOfSurah({
     Key? key,
     required this.surahNumber,
-    required this.surahCount,
+    required this.surahCount, required this.surahData,
   }) : super(key: key);
 
   final int surahNumber;
-  final int surahCount;
+  final int surahCount;  final SurahData surahData;
 
   @override
   State<BodyOfSurah> createState() => _BodyOfSurahState();
@@ -106,54 +108,62 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
               const SizedBox(
                 height: 5,
               ),
-              GestureDetector(
-                onLongPress: () {},
-                child: RichText(
-                  textAlign: widget.surahCount <= 20
-                      ? TextAlign.center
-                      : TextAlign.justify,
-                  text: TextSpan(
-                    children: [
-                      for (var i = 0; i <= widget.surahCount - 1; i++) ...{
-                        TextSpan(
-                          recognizer: LongPressGestureRecognizer()
-                            ..onLongPress = () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  backgroundColor: AppConstance.primaryColor,
-                                  elevation: 2,
-                                  content: CustomText(
-                                    text: "تم حفظ الاية بنجاح",
-                                    fontSize: 20,
-                                    textColor: Colors.white,
-                                    textAlign: TextAlign.center,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+              RichText(
+                textAlign: widget.surahCount <= 20
+                    ? TextAlign.center
+                    : TextAlign.justify,
+                text: TextSpan(
+                  children: [
+                    for (var i = 0; i <= widget.surahCount - 1; i++) ...{
+                      TextSpan(
+                        recognizer: LongPressGestureRecognizer()
+                          ..onLongPress = ()async {
+                           await ArchivesCubit.get(context).addProductToCart(
+                              archivedSuraModel: ArchivedSuraModel(
+                                number: widget.surahData.number ??0,
+                                name: widget.surahData.name ??"",
+                                numberOfAyahs: widget.surahData.numberOfAyahs ??0,
+                                suraIndex: i,
+                                type: widget.surahData.type??'',
+                                content: cubit.surahAyat[i],
+                              ),
+                              context: context,
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                duration: Duration(seconds: 1),
+                                backgroundColor: AppConstance.primaryColor,
+                                elevation: 2,
+                                content: CustomText(
+                                  text: "تم حفظ الاية بنجاح",
+                                  fontSize: 20,
+                                  textColor: Colors.white,
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              );
-                              print("sss ${cubit.surahAyat[i]}");
-                            },
-                          text: SurahAyatCubit.get(context).surahAyat[i],
-                          style: TextStyle(
-                            fontFamily: 'Traditional',
-                            fontSize: cubit.fontSize,
-                            color: Colors.black87,
-                            height: 2,
-                          ),
+                              ),
+                            );
+                            print("sss ${cubit.surahAyat[i]}");
+                          },
+                        text: SurahAyatCubit.get(context).surahAyat[i],
+                        style: TextStyle(
+                          fontFamily: 'Traditional',
+                          fontSize: cubit.fontSize,
+                          color: Colors.black87,
+                          height: 2,
                         ),
-                        WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: Image.asset(
-                            "assets/icons/star.png",
-                            width: 25,
-                            height: 25,
-                            // color: AppConstance.primaryColor,
-                          ),
+                      ),
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: Image.asset(
+                          "assets/icons/star.png",
+                          width: 25,
+                          height: 25,
+                          // color: AppConstance.primaryColor,
                         ),
-                      }
-                    ],
-                  ),
+                      ),
+                    }
+                  ],
                 ),
               ),
               const SizedBox(
