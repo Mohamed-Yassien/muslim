@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muslin/app/domain/models/surah/surah_model.dart';
 
 import '../../app/presentation/screens/home/home_screen.dart';
 import '../../app/presentation/screens/surah_ayat/surah_ayat_screen.dart';
@@ -19,9 +20,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (context) {
-            var args = routeSettings.arguments as PassIntArguments;
+            var args = routeSettings.arguments as PassModel;
             return SurahAyatScreen(
-              surahNumber: args.id,
+              surahData: args.surahData,
             );
           },
         );
@@ -45,10 +46,10 @@ class RouteGenerator {
   }
 }
 
-class PassIntArguments {
-  int id;
+class PassModel {
+  final SurahData surahData;
 
-  PassIntArguments({
-    required this.id,
+  PassModel({
+    required this.surahData,
   });
 }

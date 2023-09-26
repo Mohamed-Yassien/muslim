@@ -9,3 +9,5 @@ class GetSurahAyatLoadingState extends SurahAyatState {}
 class GetSurahAyatSuccessState extends SurahAyatState {}
 
 class GetSurahAyatErrorState extends SurahAyatState {}
+
+class ChangeSliderValueState extends SurahAyatState{}

@@ -17,8 +17,8 @@ class SurahItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           Routes.surahAyatScreen,
-          arguments: PassIntArguments(
-            id: surahData.number ?? 0,
+          arguments: PassModel(
+            surahData: surahData,
           ),
         );
       },

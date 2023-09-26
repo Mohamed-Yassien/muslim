@@ -1,19 +1,21 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslin/app/domain/models/surah/surah_model.dart';
 import 'package:muslin/app/presentation/components/custom_text.dart';
 import 'package:muslin/app/presentation/components/loading_and_error.dart';
 import 'package:muslin/app/presentation/components/surah_arabic_number.dart';
 import 'package:muslin/core/constants.dart';
-import 'package:quran/quran.dart';
 import 'cubit/surah_ayat_cubit.dart';
 
 class SurahAyatScreen extends StatefulWidget {
   static const String id = "/SurahAyatScreen";
-  final int surahNumber;
+  final SurahData surahData;
 
-  const SurahAyatScreen({Key? key, required this.surahNumber})
-      : super(key: key);
+  const SurahAyatScreen({
+    Key? key,
+    required this.surahData,
+  }) : super(key: key);
 
   @override
   State<SurahAyatScreen> createState() => _SurahAyatScreenState();
@@ -24,16 +26,25 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       var cubit = SurahAyatCubit.get(context);
-      await cubit.loadSurahAyat(surahNumber: widget.surahNumber);
+      await cubit.getSurahDetails(
+          surahNumber: widget.surahData.number ?? 0,
+          surahCount: widget.surahData.numberOfAyahs ?? 0);
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    int surahIndex = widget.surahNumber;
+    int surahIndex = widget.surahData.number ?? 0;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: CustomText(
+          text: widget.surahData.name ?? "",
+          fontSize: 22,
+          textColor: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: BlocBuilder<SurahAyatCubit, SurahAyatState>(
         builder: (context, state) {
           return LoadingAndError(
@@ -41,7 +52,10 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
             isLoading: state is GetSurahAyatLoadingState,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: BodyOfSurah(surahNumber: surahIndex - 1),
+              child: BodyOfSurah(
+                surahNumber: surahIndex - 1,
+                surahCount: widget.surahData.numberOfAyahs ?? 0,
+              ),
             ),
           );
         },
@@ -50,21 +64,42 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
   }
 }
 
-class BodyOfSurah extends StatelessWidget {
+class BodyOfSurah extends StatefulWidget {
   const BodyOfSurah({
     Key? key,
     required this.surahNumber,
+    required this.surahCount,
   }) : super(key: key);
 
   final int surahNumber;
+  final int surahCount;
 
   @override
+  State<BodyOfSurah> createState() => _BodyOfSurahState();
+}
+
+class _BodyOfSurahState extends State<BodyOfSurah> {
+  @override
   Widget build(BuildContext context) {
+    var cubit = SurahAyatCubit.get(context);
     return Column(
       children: [
         Expanded(
           child: ListView(
             children: [
+              const CustomText(
+                text: "حجم الخط",
+                fontSize: 22,
+              ),
+              Slider(
+                min: 22,
+                max: 37.0,
+                value: cubit.fontSize,
+                activeColor: AppConstance.primaryColor,
+                onChanged: (value) {
+                  cubit.changeSliderValue(val: value);
+                },
+              ),
               const Padding(
                 padding: EdgeInsets.all(5),
               ),
@@ -74,7 +109,7 @@ class BodyOfSurah extends StatelessWidget {
               GestureDetector(
                 onLongPress: () {},
                 child: RichText(
-                  textAlign: TextAlign.justify, // count of surah
+                  textAlign: TextAlign.justify,
                   text: TextSpan(
                     children: [
                       for (var i = 0;
@@ -98,17 +133,19 @@ class BodyOfSurah extends StatelessWidget {
                               );
                             },
                           text: SurahAyatCubit.get(context).surahAyat[i],
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Traditional',
-                            fontSize: 24,
+                            fontSize: cubit.fontSize,
                             color: Colors.black87,
                             height: 2,
                           ),
                         ),
                         WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
-                          child: ArabicSuraNumber(
-                            i: i,
+                          child: SizedBox(
+                            child: ArabicSuraNumber(
+                              i: i,
+                            ),
                           ),
                         ),
                       }
@@ -119,28 +156,17 @@ class BodyOfSurah extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const KhatimaOfSurah(),
+              Align(
+                alignment: Alignment.center,
+                child: CustomText(
+                  text: "صدق الله العظيم",
+                  fontSize: cubit.fontSize,
+                ),
+              ),
             ],
           ),
         ),
       ],
-    );
-  }
-}
-
-class KhatimaOfSurah extends StatelessWidget {
-  const KhatimaOfSurah({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Align(
-      alignment: Alignment.center,
-      child: CustomText(
-        text: "صدق الله العظيم",
-        fontSize: 20,
-      ),
     );
   }
 }
