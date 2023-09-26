@@ -132,6 +132,7 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                                   ),
                                 ),
                               );
+                              print("sss ${cubit.surahAyat[i]}");
                             },
                           text: SurahAyatCubit.get(context).surahAyat[i],
                           style: TextStyle(
@@ -142,15 +143,14 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                           ),
                         ),
                         WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Image.asset(
-                              "assets/icons/star.png",
-                              width: 25,
-                              height: 25,
-                              // color: AppConstance.primaryColor,
-                            )
-                           
-                            ),
+                          alignment: PlaceholderAlignment.middle,
+                          child: Image.asset(
+                            "assets/icons/star.png",
+                            width: 25,
+                            height: 25,
+                            // color: AppConstance.primaryColor,
+                          ),
+                        ),
                       }
                     ],
                   ),

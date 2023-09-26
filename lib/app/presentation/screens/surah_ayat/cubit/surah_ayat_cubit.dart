@@ -35,7 +35,7 @@ class SurahAyatCubit extends Cubit<SurahAyatState> {
     }
   }
 
-  double fontSize = 22;
+  double fontSize = 25;
 
   changeSliderValue({
     required double val,
