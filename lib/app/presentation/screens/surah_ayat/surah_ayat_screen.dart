@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:muslin/app/domain/models/surah/surah_model.dart';
 import 'package:muslin/app/presentation/components/custom_text.dart';
 import 'package:muslin/app/presentation/components/loading_and_error.dart';
-import 'package:muslin/app/presentation/components/surah_arabic_number.dart';
 import 'package:muslin/core/constants.dart';
 import 'cubit/surah_ayat_cubit.dart';
 
@@ -26,6 +25,7 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       var cubit = SurahAyatCubit.get(context);
+      cubit.surahAyat.clear();
       await cubit.getSurahDetails(
           surahNumber: widget.surahData.number ?? 0,
           surahCount: widget.surahData.numberOfAyahs ?? 0);
@@ -53,7 +53,7 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: BodyOfSurah(
-                surahNumber: surahIndex - 1,
+                surahNumber: surahIndex,
                 surahCount: widget.surahData.numberOfAyahs ?? 0,
               ),
             ),
@@ -92,7 +92,7 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                 fontSize: 22,
               ),
               Slider(
-                min: 22,
+                min: 25,
                 max: 37.0,
                 value: cubit.fontSize,
                 activeColor: AppConstance.primaryColor,
@@ -109,12 +109,12 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
               GestureDetector(
                 onLongPress: () {},
                 child: RichText(
-                  textAlign: TextAlign.justify,
+                  textAlign: widget.surahCount <= 20
+                      ? TextAlign.center
+                      : TextAlign.justify,
                   text: TextSpan(
                     children: [
-                      for (var i = 0;
-                          i <= SurahAyatCubit.get(context).surahAyat.length - 1;
-                          i++) ...{
+                      for (var i = 0; i <= widget.surahCount - 1; i++) ...{
                         TextSpan(
                           recognizer: LongPressGestureRecognizer()
                             ..onLongPress = () {
@@ -128,6 +128,7 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                                     fontSize: 20,
                                     textColor: Colors.white,
                                     textAlign: TextAlign.center,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               );
@@ -141,20 +142,22 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                           ),
                         ),
                         WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: SizedBox(
-                            child: ArabicSuraNumber(
-                              i: i,
+                            alignment: PlaceholderAlignment.middle,
+                            child: Image.asset(
+                              "assets/icons/star.png",
+                              width: 25,
+                              height: 25,
+                              // color: AppConstance.primaryColor,
+                            )
+                           
                             ),
-                          ),
-                        ),
                       }
                     ],
                   ),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               Align(
                 alignment: Alignment.center,

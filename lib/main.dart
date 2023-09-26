@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslin/app/presentation/screens/archives/cubit/cubit/archives_cubit.dart';
 
 import 'app/data/sources/local/sharedpreferences.dart';
 import 'app/presentation/screens/surah_ayat/cubit/surah_ayat_cubit.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SurahAyatCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ArchivesCubit(),
         ),
       ],
       child: MaterialApp(
