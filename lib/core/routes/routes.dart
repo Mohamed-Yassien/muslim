@@ -23,6 +23,8 @@ class RouteGenerator {
             var args = routeSettings.arguments as PassModel;
             return SurahAyatScreen(
               surahData: args.surahData,
+              fromArchives: args.isFromArchives,
+              savedIndex: args.index,
             );
           },
         );
@@ -48,8 +50,12 @@ class RouteGenerator {
 
 class PassModel {
   final SurahData surahData;
+  final int? index;
+  final bool isFromArchives;
 
   PassModel({
     required this.surahData,
+    required this.isFromArchives,
+    this.index,
   });
 }

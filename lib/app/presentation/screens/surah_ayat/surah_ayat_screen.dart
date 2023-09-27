@@ -11,10 +11,14 @@ import 'cubit/surah_ayat_cubit.dart';
 
 class SurahAyatScreen extends StatefulWidget {
   final SurahData surahData;
+  final int? savedIndex;
+  final bool fromArchives;
 
   const SurahAyatScreen({
     Key? key,
     required this.surahData,
+    this.savedIndex,
+    required this.fromArchives,
   }) : super(key: key);
 
   @override
@@ -57,6 +61,8 @@ class _SurahAyatScreenState extends State<SurahAyatScreen> {
                 surahNumber: surahIndex,
                 surahCount: widget.surahData.numberOfAyahs ?? 0,
                 surahData: widget.surahData,
+                index: widget.savedIndex,
+                isFromArchives: widget.fromArchives,
               ),
             ),
           );
@@ -70,17 +76,49 @@ class BodyOfSurah extends StatefulWidget {
   const BodyOfSurah({
     Key? key,
     required this.surahNumber,
-    required this.surahCount, required this.surahData,
+    required this.surahCount,
+    required this.surahData,
+    required this.isFromArchives,
+    required this.index,
   }) : super(key: key);
 
   final int surahNumber;
-  final int surahCount;  final SurahData surahData;
+  final int surahCount;
+  final int? index;
+  final SurahData surahData;
+  final bool? isFromArchives;
 
   @override
   State<BodyOfSurah> createState() => _BodyOfSurahState();
 }
 
 class _BodyOfSurahState extends State<BodyOfSurah> {
+  List<GlobalKey>? _keys;
+
+  @override
+  void initState() {
+    super.initState();
+    _keys = List<GlobalKey>.generate(
+      widget.surahCount,
+      (_) => GlobalKey(),
+    );
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (widget.index != null && widget.isFromArchives == true) {
+        _goToSpan(widget.index!);
+      }
+    });
+  }
+
+  void _goToSpan(int spanIndex) {
+    Scrollable.ensureVisible(
+      _keys![spanIndex].currentContext!,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+      alignment: 0.5,
+      duration: const Duration(milliseconds: 600),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var cubit = SurahAyatCubit.get(context);
@@ -117,14 +155,15 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                     for (var i = 0; i <= widget.surahCount - 1; i++) ...{
                       TextSpan(
                         recognizer: LongPressGestureRecognizer()
-                          ..onLongPress = ()async {
-                           await ArchivesCubit.get(context).addProductToCart(
+                          ..onLongPress = () async {
+                            await ArchivesCubit.get(context).addProductToCart(
                               archivedSuraModel: ArchivedSuraModel(
-                                number: widget.surahData.number ??0,
-                                name: widget.surahData.name ??"",
-                                numberOfAyahs: widget.surahData.numberOfAyahs ??0,
+                                number: widget.surahData.number ?? 0,
+                                name: widget.surahData.name ?? "",
+                                numberOfAyahs:
+                                    widget.surahData.numberOfAyahs ?? 0,
                                 suraIndex: i,
-                                type: widget.surahData.type??'',
+                                type: widget.surahData.type ?? '',
                                 content: cubit.surahAyat[i],
                               ),
                               context: context,
@@ -149,7 +188,10 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                         style: TextStyle(
                           fontFamily: 'Traditional',
                           fontSize: cubit.fontSize,
-                          color: Colors.black87,
+                          color: widget.index == i
+                              ? Colors.amber
+                              : Colors.black87,
+                          fontWeight: widget.index == i ? FontWeight.w900 : FontWeight.w600,
                           height: 2,
                         ),
                       ),
@@ -158,6 +200,7 @@ class _BodyOfSurahState extends State<BodyOfSurah> {
                         child: Image.asset(
                           "assets/icons/star.png",
                           width: 25,
+                          key: _keys![i],
                           height: 25,
                           // color: AppConstance.primaryColor,
                         ),

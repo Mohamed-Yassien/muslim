@@ -19,6 +19,7 @@ class SurahItem extends StatelessWidget {
           Routes.surahAyatScreen,
           arguments: PassModel(
             surahData: surahData,
+            isFromArchives: false,
           ),
         );
       },

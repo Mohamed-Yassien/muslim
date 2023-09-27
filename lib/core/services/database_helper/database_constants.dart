@@ -1,8 +1,8 @@
 String tableArchived = 'archivedTable';
 
-String columnIndex = 'surahIndex';
-String columnName = 'surahName';
-String columnType = 'surahType';
+String columnIndex = 'suraIndex';
+String columnName = 'name';
+String columnType = 'type';
 String columnNumberOfAyahs = 'numberOfAyahs';
-String columnSurahNumber = 'surahNumber';
-String columnContent = 'surahContent';
+String columnSurahNumber = 'number';
+String columnContent = 'content';

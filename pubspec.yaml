@@ -43,6 +43,7 @@ dependencies:
   quran: ^1.2.2
   sqflite:
   path_provider: ^2.0.11
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:

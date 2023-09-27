@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.muslin">
-   <application
-        android:label="muslin"
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:label="مسلم"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
